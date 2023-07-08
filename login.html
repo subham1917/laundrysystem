@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user login</title>
+
+
+    <style>
+        body {
+
+            margin: 0;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #2a4dc0;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #4ac512;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 250px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+    <script type="text/javascript" src="./consumeapi.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js">   </script>
+    <script>
+        
+        function closeModal() {
+            var span = document.getElementsByClassName("close")[0];
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+        var obj = {};
+        function handleChange2(event) {
+            if (document.getElementById('email'))
+                obj.email = event;
+        }
+        function handleChange3(event) {
+            if (document.getElementById('password'))
+                obj.password = event;
+        }
+
+        function userRegistration() {
+            var modal = document.getElementById("myModal");
+            console.log(obj);
+
+            if (document.getElementById('email').value === "") {
+                //return alert('Please enter email')
+                modal.style.display = "block";
+                return document.getElementById('msg').innerHTML = "Please enter email";
+            }
+            if (document.getElementById('password').value === "") {
+                //return alert('Please enter password')
+                modal.style.display = "block";
+                return document.getElementById('msg').innerHTML = "Please enter password";
+            }
+
+            axios.post("http://localhost:8000/login", obj).then(response => {
+                console.log(response);
+                if (response.data.msg === "valid email-id or password") {
+                    sessionStorage.setItem('data',response.data.value.username);
+                    if(response.data.value.role=="2")
+                    window.location.replace("dashboardadmin.html")
+                    else
+                    window.location.replace("dashboarduser.html")
+                }
+                
+                else {
+                    // alert(response.data.msg)
+                    modal.style.display = "block";
+                    return document.getElementById('msg').innerHTML = response.data.msg;
+                }
+            });
+
+
+
+            // const datapost = {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify(obj)
+            // }
+            // fetch("http://localhost:8000/login", datapost
+            // ).then(res => {if(res.status===200){
+
+            //  // window.location.replace("dashboard.html")
+            //    // return res.json();
+
+            // }
+            // console.log(res.json());
+            //     console.log(res);
+            // })
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <body>
+        <h1>User Login</h1>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" onchange="handleChange2(this.value)" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" onchange="handleChange3(this.value)" required>
+
+            <label for="number">Number</label>
+            <input type="text" id="text">
+
+            <button type="button" onclick="userRegistration();">Login</button>
+            <a href="./registration.html" style="float: right; text-decoration: none;">Register</a>
+
+
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p id="msg"></p>
+                </div>
+
+            </div>
+        </form>
+    </body>
+</body>
+
+</html>

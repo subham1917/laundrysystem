@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Dashboard - Laundry Management System</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Laundry Management System</h1>
+  </header>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      background-color: #f2f2f2;
+    }
+
+    nav ul li a:hover {
+      background-color: #ccc;
+    }
+
+    nav ul li a.active {
+      background-color: #555;
+      color: #fff;
+    }
+
+    main {
+      margin: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    console.log(sessionStorage.data);
+    // onload();
+    // function onload() {
+    //   document.getElementById('user').innerHTML = sessionStorage.data;
+    // }
+
+    window.onload = function () {
+      what();
+      function what() {
+        document.getElementById('user').innerHTML ="Welcome     "+ sessionStorage.data;
+      };
+    }
+
+  </script>
+  <nav>
+    <ul>
+      <li><a href="#" class="active">Dashboard</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="./userform.html">Orders</a></li>
+      <li><a href="#">Payments</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </nav>
+ <h1 id="user">Welcome  
+  </h1>
+  <main>
+    <section class="overview">
+      <div class="card">
+        <h3>Total Orders</h3>
+        <p>15</p>
+      </div>
+      <div class="card">
+        <h3>Completed Orders</h3>
+        <p>10</p>
+      </div>
+      <div class="card">
+        <h3>Pending Orders</h3>
+        <p>5</p>
+      </div>
+    </section>
+
+    <section class="recent-orders">
+      <h2>Recent Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2023-07-01</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2023-07-02</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2023-07-03</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Laundry Management System</p>
+  </footer>
+</body>
+
+</html>
