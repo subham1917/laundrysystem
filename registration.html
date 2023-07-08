@@ -115,67 +115,7 @@
             cursor: pointer;
         }
     </style>
-    <!-- <script>
-
-
-      
-
-        function clear() {
-            document.getElementById('Name').value = null;
-        }
-
-        function handleClick111() {
-            var modal = document.getElementById("myModal");
-            console.log(obj);
-            if (document.getElementById('Name').value === "") {
-                modal.style.display = "block";
-                return document.getElementById('msg').innerHTML = "Please enter name";
-                // return alert('Please enter first name')
-            }
-
-            if (document.getElementById('userName').value === "") {
-                // return alert('Please enter last name')
-                modal.style.display = "block";
-                return document.getElementById('msg').innerHTML = "Please enter user name";
-            }
-            if (document.getElementById('email').value === "") {
-                //return alert('Please enter email')
-                modal.style.display = "block";
-                return document.getElementById('msg').innerHTML = "Please enter email";
-            }
-            if (document.getElementById('password').value === "") {
-                //return alert('Please enter password')
-                modal.style.display = "block";
-                return document.getElementById('msg').innerHTML = "Please enter password";
-            }
-            if (document.getElementById('number').value === "") {
-                //return alert('Please enter number')
-                modal.style.display = "block";
-                return document.getElementById('msg').innerHTML = "Please enter phone number";
-            }
-
-
-
-            const datapost = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(obj)
-            }
-            fetch("http://localhost:8000/post", datapost
-            ).then(res => {
-                console.log(JSON.stringify(res))
-            })
-        }
-
-        function closeModal() {
-            var span = document.getElementsByClassName("close")[0];
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-    </script> -->
+ 
     <script type="text/javascript" src="./consumeapi.js"></script>
 
     <script>
