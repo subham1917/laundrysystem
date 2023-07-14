@@ -14,15 +14,6 @@ mongoose.connect("mongodb://localhost:27017/laundry", {
   console.log('error')
 })
 
-// const connectionStr = "mongodb://localhost:27017/mynewdb";
-
-// mongoose.connect(connectionStr, {useNewUrlparser: true})
-// .then(() => console.log('connected to mongodb'))
-// .catch(err => console.log(err))
-
-// mongoose.connection.on('error', err => {
-//   console.log(err)
-// })
 
 const userSchema = {
 
